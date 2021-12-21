@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script type="text/javascript">
+</script>
+</head>
+<body>
+<script type="text/javascript">
+// Program Name: Is it a square?
+// Program Description: Create a 250 element array and load the array with a series of numbers 
+// starting at the first position that is the square of the index. For example, at position 0 would be 0, 
+// at position 1 would be 1, at position 2 would be 4, at position 3 would be 9…. Etc.
+// Ask the user for a number between 0 and 125,000 and let them know if that number is a square.
+// Employ a binary search. Please ensure that the following is completed on both assignments.
+
+// Name: Amos Johnson
+    
+    // Declare Variables
+    var index;
+    var found = false;
+    var SIZE = 250;
+    var squaresArray = new Array(SIZE);
+    var isPerfectSquare;
+    var BR = "<br>";
+    var numberOfSquares = 0;
+    var low = 0;
+    var high = squaresArray.length - 1;
+    
+    // Prompt asking user to enter a number
+    isPerfectSquare = prompt("Enter a number between 1 and 125,000", "");
+    isPerfectSquare = parseInt(isPerfectSquare);
+
+    // For loop for calculating perfect square
+    for(index = 0; index < SIZE; index++) {
+        squaresArray[index] = index * index;
+        if (squaresArray[index] == isPerfectSquare) {
+            document.write(isPerfectSquare + " is a perfect square." + BR);
+            found = true;
+        }
+    }
+    
+    // While loop for finding perfect square
+    while (low <= high && !found) {
+        index = (low + high) / 2;
+        index = Math.floor(index);
+
+        if(squaresArray[index] == isPerfectSquare) {
+            found = 1;
+        } else {
+            if (squaresArray[index] > isPerfectSquare) {
+                high = index - 1;
+            } else {
+                low = index + 1;
+            }
+        }
+    } 
+    
+    // Display message for when a perfect square is not found
+    if (!found) {
+        document.write(isPerfectSquare + " is not a perfect square." + BR);
+    }
+
+    document.write("Thanks for using our program" + BR);
+
+</script>
+</body>
+</html>
